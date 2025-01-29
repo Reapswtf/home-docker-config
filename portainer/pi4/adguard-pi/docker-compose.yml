@@ -1,0 +1,17 @@
+---
+services:
+  adguard:
+    image: adguard/adguardhome:latest
+    container_name: adguardhome
+    network_mode: host
+    volumes:
+      - /mnt/nas/docker/configs/adguard-pi/workdir:/opt/adguardhome/work
+      - /mnt/nas/docker/configs/adguard-pi/config:/opt/adguardhome/conf
+      - /var/run/dbus:/var/run/dbus:ro
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 80:80/tcp
+      - 443:443/tcp
+      - 3000:3000/tcp
+    restart: unless-stopped

@@ -1,0 +1,17 @@
+---
+services:
+  adguard:
+    image: adguard/adguardhome:latest
+    container_name: adguardhome
+    network_mode: host
+    volumes:
+      - /volume1/docker/configs/adguard-syn/workdir:/opt/adguardhome/work
+      - /volume1/docker/configs/adguard-syn/config:/opt/adguardhome/conf
+      - /var/run/dbus:/var/run/dbus:ro
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 80:780/tcp
+      - 443:7443/tcp
+      - 3000:3000/tcp
+    restart: unless-stopped

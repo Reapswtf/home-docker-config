@@ -1,0 +1,16 @@
+---
+services:
+  sonarr:
+    image: linuxserver/sonarr:latest
+    network_mode: "host"
+    container_name: sonar
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /volume1/docker/configs/sonarr:/config
+      - /volume2/Video:/video
+    ports:
+      - 8989:8989
+    restart: unless-stopped

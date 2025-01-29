@@ -1,0 +1,15 @@
+---
+services:
+  plex:
+    image: linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - VERSION=docker
+      - PLEX_CLAIM=claim-hp4tfzQ3h2yEd3mYu2Wp
+    volumes:
+      - /mnt/nas/Video:/video
+    restart: unless-stopped

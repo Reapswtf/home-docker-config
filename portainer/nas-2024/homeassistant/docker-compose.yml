@@ -1,0 +1,23 @@
+---
+services:
+  homeassistant:
+    image: linuxserver/homeassistant:latest
+    container_name: homeassistant
+    networks:
+      - bridge
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /volume1/docker/configs/homeassistant/config:/config
+      - /var/run/dbus:/var/run/dbus:ro
+    ports:
+      - 8123:8123
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    restart: unless-stopped
+
+networks:
+  bridge:

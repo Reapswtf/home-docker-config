@@ -1,0 +1,16 @@
+---
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    network_mode: "host"
+    container_name: portainer
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /volume1/docker/configs/portainer-ce:/data
+    ports:
+      - 9443:9443
+    restart: unless-stopped
