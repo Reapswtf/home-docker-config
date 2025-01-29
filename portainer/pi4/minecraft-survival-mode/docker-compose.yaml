@@ -1,0 +1,15 @@
+services:
+  mc:
+    image: itzg/minecraft-bedrock-server
+    network_mode: "host"
+    tty: true
+    stdin_open: true
+    ports:
+      - "19132:19132/udp"
+    environment:
+      EULA: "TRUE"
+      SERVER_NAME: "dads-survival-server"
+      GAMEMODE: "survival"
+
+    volumes:
+      - /mnt/nas/docker/configs/minecraft-survival-mode/data:/data

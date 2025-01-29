@@ -1,0 +1,20 @@
+---
+services:
+  crafty:
+    image: registry.gitlab.com/crafty-controller/crafty-4:latest
+    container_name: crafty
+#    network_mode: host
+    environment:
+      - TZ=Etc/UTC
+    volumes:
+      - /volume1/docker/configs/crafty/backups:/crafty/backups
+      - /volume1/docker/configs/crafty/logs:/crafty/logs
+      - /volume1/docker/configs/crafty/servers:/crafty/servers
+      - /volume1/docker/configs/crafty/config:/crafty/app/config
+      - /volume1/docker/configs/crafty/import:/crafty/import
+
+    ports:
+      - "8443:8443" # HTTPS
+      #- "8123:8123" # DYNMAP
+      - "19132:19132/udp" # BEDROCK
+    restart: unless-stopped

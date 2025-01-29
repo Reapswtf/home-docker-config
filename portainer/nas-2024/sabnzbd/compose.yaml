@@ -1,0 +1,17 @@
+---
+services:
+  sabnzbd:
+    image: linuxserver/sabnzbd:latest
+    network_mode: "host"
+    container_name: sabnzb
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /volume1/docker/configs/sabnzbd:/config
+      - /volume2/Video:/video
+
+    ports:
+      - 8080:8080
+    restart: unless-stopped
